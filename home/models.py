@@ -10,11 +10,19 @@ class CustomText(models.Model):
     title = models.CharField(max_length=150,)
     test = models.OneToOneField(
         "home.CustomText",
+        null=True,
+        blank=True,
+        default=1,
+        on_delete=models.SET_DEFAULT,
+        related_name="customtext_test",
+    )
+    name = models.OneToOneField(
+        "home.CustomText",
         on_delete=models.SET_DEFAULT,
         default=1,
         null=True,
         blank=True,
-        related_name="customtext_test",
+        related_name="customtext_name",
     )
 
     def __str__(self):
